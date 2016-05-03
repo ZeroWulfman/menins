@@ -16,6 +16,8 @@ final class NF_Admin_Menus_Licenses
 
     public function submit_listener()
     {
+        if( ! current_user_can( apply_filters( 'ninja_forms_admin_license_update_capabilities', 'manage_options' ) ) ) return;
+
         if( ! isset( $_POST[ 'ninja_forms_license' ] ) || ! $_POST[ 'ninja_forms_license' ] ) return;
 
         $key    = sanitize_text_field( $_POST[ 'ninja_forms_license' ][ 'key' ]    );
@@ -73,7 +75,7 @@ final class NF_Admin_Menus_Licenses
     {
         foreach( $this->licenses as $license ){
 
-            if( ! $name == $license->product_name ) continue;
+            if( $name != $license->product_name ) continue;
 
             $license->activate_license( $key );
         }
@@ -83,7 +85,7 @@ final class NF_Admin_Menus_Licenses
     {
         foreach( $this->licenses as $license ){
 
-            if( ! $name == $license->product_name ) continue;
+            if( $name != $license->product_name ) continue;
 
             $license->deactivate_license();
         }
