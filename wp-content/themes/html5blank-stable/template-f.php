@@ -1,4 +1,4 @@
-<?php /* Template Name: One Template */ get_header(); ?>
+<?php /* Template Name: Template F */ get_header(); ?>
 
 	<main role="main">
 		<!-- section -->

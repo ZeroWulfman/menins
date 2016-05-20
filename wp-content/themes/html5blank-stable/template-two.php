@@ -14,5 +14,4 @@ include("quote.php");
 		<!-- /section -->
 	</main>
 
-
 <?php get_footer(); ?>
