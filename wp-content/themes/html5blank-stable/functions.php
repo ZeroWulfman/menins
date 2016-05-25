@@ -65,26 +65,17 @@ if (function_exists('add_theme_support'))
 // HTML5 Blank navigation
 function html5blank_nav()
 {
-	wp_nav_menu(
-	array(
-		'theme_location'  => 'header-menu',
-		'menu'            => '',
-		'container'       => 'div',
-		'container_class' => 'menu-{menu slug}-container',
-		'container_id'    => '',
-		'menu_class'      => 'menu',
-		'menu_id'         => '',
-		'echo'            => true,
-		'fallback_cb'     => 'wp_page_menu',
-		'before'          => '',
-		'after'           => '',
-		'link_before'     => '',
-		'link_after'      => '',
-		'items_wrap'      => '<ul>%3$s</ul>',
-		'depth'           => 0,
-		'walker'          => ''
-		)
-	);
+    wp_nav_menu( array(
+                'menu'              => 'header-menu',
+                'theme_location'    => 'header-menu',
+                'depth'             => 2,
+                'container'         => 'div',
+                'container_class'   => 'collapse navbar-collapse',
+                'container_id'      => 'bs-example-navbar-collapse-1',
+                'menu_class'        => 'nav navbar-nav',
+                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                'walker'            => new wp_bootstrap_navwalker())
+            );
 }
 
 // Load HTML5 Blank scripts (header.php)
@@ -126,6 +117,11 @@ function html5blank_styles()
     get_template_directory_uri() .
     '/bootstrap/css/bootstrap.min.css', array(), '3.3.6', 'all');
     wp_enqueue_style('bootstrap-css');
+
+    wp_register_style('fontawesome-css',
+    get_template_directory_uri() .
+    '/font-awesome/css/font-awesome.min.css', array(), '4.6.3', 'all');
+    wp_enqueue_style('fontawesome-css');
 
     wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('html5blank'); // Enqueue it!
@@ -457,5 +453,8 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 {
     return '<h2>' . $content . '</h2>';
 }
+
+// Register Custom Navigation Walker
+require_once('wp_bootstrap_navwalker.php');
 
 ?>

@@ -33,6 +33,9 @@ body {
 	font:300 11px/1.4 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	color:#444;
 }
+html, body {
+	height: 100%;
+}
 /* clear */
 .clear:before,
 .clear:after {
@@ -68,32 +71,43 @@ input:focus {
 	outline:0;
 	border:1px solid #04A4CC;
 }
-
 /*------------------------------------*\
     STRUCTURE
 \*------------------------------------*/
 
 /* wrapper */
 .wrapper {
-	max-width:1280px;
-	width:95%;
-	margin:0 auto;
-	position:relative;
+	min-height: 100%;
+	position: relative;
+	height: auto;
+	width:100%;
+	margin:0 auto -120px;
+	padding: 0 0 120px;
+}
+.main {
+
 }
 /* header */
 .header {
 
 }
 /* logo */
-.logo {
-
+.navbar-default .navbar-brand {
+	color: #FFF;
 }
-.logo-img {
 
-}
 /* nav */
-.nav {
-
+.navbar {
+	background-color: #000;
+}
+.navbar.navbar-default {
+	margin-bottom: 0px;
+}
+.navbar-default .navbar-nav>li>a {
+	color: #FFF ;
+}
+.navbar ul {
+	float: right;
 }
 /* sidebar */
 .sidebar {
@@ -101,21 +115,71 @@ input:focus {
 }
 /* footer */
 .footer {
-
+	color: #FFF;
+    height: 120px;
+    background-color: #000;
+	margin-bottom: 0px;
 }
-
+.copyright {
+	position: relative;
+	top: 95px;
+	margin: 0px;
+}
+.social {
+	float: right;
+	margin-right: 25px;
+	position: relative;
+	top: 20px;
+}
+.social a {
+	margin: 0 5px;
+}
+/*accordian*/
+.panel.panel-default {
+	margin-bottom: 0;
+}
+a.accordion-toggle {
+	text-decoration: none;
+}
+.chevron {
+	position:relative;
+	top: -10px;
+}
 /*------------------------------------*\
     PAGES
 \*------------------------------------*/
+/*Contact Page*/
+.side {
+	background-color: #CCC;
+	font-size: 16px;
+	height:82.3vh;
+	overflow-y: hidden;
+}
+.in-side h1 {
+	margin-bottom: 30px;
+}
+.in-side h3 {
+	margin-top: 40px;
+}
+.form-container {
+	margin-left:20px;
+}
+/*About Us Page*/
+.banner-photo {
+	width: 100%;
+	background-image: url("http://placehold.it/1920x1080");
+	background-position:fixed;
+	background-repeat:no-repeat;
+	height:300px;
+	-webkit-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-o-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.panel-title {
+	font-size: 20px;
+}
 
-/**********************************************************AUTO INSURANCE******/
-legend {
-	font-size: 24px;
-	font-weight: 700;
-}
-.vehicle {
-	display:none;
-}
 /*------------------------------------*\
     IMAGES
 \*------------------------------------*/
@@ -149,6 +213,14 @@ legend {
 }
 @media only screen and (min-width:768px) {
 
+}
+@media only screen and (max-width: 768px) {
+	.navbar ul {
+		float:none;
+	}
+	.side {
+		height: auto;
+	}
 }
 @media only screen and (min-width:1024px) {
 
